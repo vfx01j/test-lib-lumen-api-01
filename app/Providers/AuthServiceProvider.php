@@ -34,8 +34,9 @@ class AuthServiceProvider extends ServiceProvider
             //if ($request->input('api_token')) {
             //    return User::where('api_token', $request->input('api_token'))->first();
             //}
+            $library_token = 'Happy New Year';
             $header = $request->header('X-VALID-USER');
-            if ($header && $header=='Happy New Year'){
+            if ($header && $header==$library_token){
               return new User();
             } else {
               return null;

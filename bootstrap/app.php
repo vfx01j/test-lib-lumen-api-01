@@ -48,6 +48,11 @@ $app->singleton(
     App\Console\Kernel::class
 );
 
+/* Add Storage support */
+$app->singleton('filesystem', function ($app) {
+    return $app->loadComponent('filesystems', 'Illuminate\Filesystem\FilesystemServiceProvider', 'filesystem');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Register Middleware
