@@ -1,10 +1,13 @@
 # Guide to Backend test: PHP Web Service
 
 ##Docker image required:
+```
 https://hub.docker.com/r/kennethpega2017/alpine-lumen-nginx/
+```
 
 ###Checkout Github source code into local Filesystem:
 
+```
 $ cd ~/Downloads
 
 $ mkdir www
@@ -12,49 +15,69 @@ $ mkdir www
 $ cd www
 
 $ git clone https://github.com/vfx01j/test-lib-lumen-api-01.git lumen-api
+```
 
 This will checkout the source code into the target folder named ~/www/lumen-api. Please change the target folder to suit your needs.
 
 To check if the checkout is successful, list the content under the target folder:
 
+```
 $ ls -l lumen-api
 
-```
 app/           bootstrap/     composer.lock* index.php.bak* public/        resources/     storage/
 
 artisan*       composer.json* database/      phpunit.xml*   readme.md*     routes/        tests/
 ```
 
 ###Basic steps to boot up docker container:
+```
 $ docker run -d -p 80:80 -p 443:443 -v [path to Host's target folder]:/var/www/application/public/lumen-api kennethpega2017/alpine-lumen-nginx
-
+```
 ###Sample command to port correctly, mount local Github source folder and start Docker container:
+```
 $ docker run -d -p 80:80 -p 443:443 -v /Users/xyz/www/lumen-api:/var/www/application/public/lumen-api  kennethpega2017/alpine-lumen-nginx
+```
 
 Please make sure port 80 and 443 are not occupied by any other program on the Host before you issue the command above.
 
 ###Sample command to initiate PHP-FPM process:
+```
 $ docker exec -it $(docker ps -a | grep kennethpega2017/alpine-lumen-nginx | grep "Up " | grep -o "^[0-9a-z]*") /bin/sh -l
+```
 
 ##Web Service API calls:
 
 ##GET requests:
+```
 http://localhost/api/library/{id}
+```
 ###Sample URL:
+```
 http://localhost/api/library/10123
+```
 
 ##GET requests:
+```
 http://localhost/api/findSmallestLeaf?tree={json}
+```
 ###Sample URL:
+```
 http://localhost/api/findSmallestLeaf?tree=%5B%7B%20%22root%22%3A%201%2C%20%22left%22%3A%20%7B%20%22root%22%3A%207%2C%20%22left%22%3A%20%7B%20%22root%22%3A%202%20%7D%2C%20%22right%22%3A%20%7B%20%22root%22%3A%206%20%7D%20%7D%2C%20%22right%22%3A%20%7B%20%22root%22%3A%205%2C%20%22left%22%3A%20%7B%20%22root%22%3A%209%20%7D%20%7D%20%7D%5D
+```
 
 ##POST requests:
+```
 http://localhost/api/library
+```
 ###Sample header:
+```
 X-VALID-USER:Happy New Year
+```
 ###Sample parameter:
+```
 library:
 [{ "id": 10124, "code": "ARC100", "name": "Architecture / Music Library", "abbr": "Arch Music", "url": "http://www.library.uq.edu.au/locations/architecture-music-library" }]
+```
 
 ##Framework usage:
 Lumen (Please see the section below for Lumen PHP Framework)
