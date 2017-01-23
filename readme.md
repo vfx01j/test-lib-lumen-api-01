@@ -2,10 +2,32 @@
 
 ##Docker image required:
 https://hub.docker.com/r/kennethpega2017/alpine-lumen-nginx/
+
+###Checkout Github source code into local Filesystem:
+
+$ cd ~/Downloads
+
+$ mkdir www
+
+$ cd www
+
+$ git clone https://github.com/vfx01j/test-lib-lumen-api-01.git lumen-api
+
+This will checkout the source code into the target folder named ~/www/lumen-api. Please change the target folder to suit your needs.
+
+To check if the checkout is successful, list the content under the target folder:
+
+$ ls -l lumen-api
+app/           bootstrap/     composer.lock* index.php.bak* public/        resources/     storage/
+artisan*       composer.json* database/      phpunit.xml*   readme.md*     routes/        tests/
+
 ###Basic steps to boot up docker container:
 $ docker run -d -p 80:80 -p 443:443 -v [path to Host's target folder]:/var/www/application/public/lumen-api kennethpega2017/alpine-lumen-nginx
-###Sample command to download and start container:
-$ docker run -d -p 80:80 -p 443:443 -v /Users/xyz/Projects/www/application/public/lumen-api:/var/www/application/public/lumen-api  kennethpega2017/alpine-lumen-nginx
+
+###Sample command to port correctly, mount local Github source folder and start Docker container:
+$ docker run -d -p 80:80 -p 443:443 -v /Users/xyz/www/lumen-api:/var/www/application/public/lumen-api  kennethpega2017/alpine-lumen-nginx
+
+Please make sure port 80 and 443 are not occupied by any other program on the Host before you issue the command above.
 
 ###Sample command to initiate PHP-FPM process:
 $ docker exec -it $(docker ps -a | grep kennethpega2017/alpine-lumen-nginx | grep "Up " | grep -o "^[0-9a-z]*") /bin/sh -l
