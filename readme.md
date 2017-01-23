@@ -18,7 +18,9 @@ This will checkout the source code into the target folder named ~/www/lumen-api.
 To check if the checkout is successful, list the content under the target folder:
 
 $ ls -l lumen-api
+
 app/           bootstrap/     composer.lock* index.php.bak* public/        resources/     storage/
+
 artisan*       composer.json* database/      phpunit.xml*   readme.md*     routes/        tests/
 
 ###Basic steps to boot up docker container:
