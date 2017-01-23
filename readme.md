@@ -1,3 +1,33 @@
+# Guide to Backend test: PHP Web Service
+
+##Web Service API calls:
+
+##GET requests:
+http://localhost/api/library/{id}
+###Sample URL:
+http://localhost/api/library/10123
+
+##GET requests:
+http://localhost/api/findSmallestLeaf?tree={json}
+###Sample URL:
+http://localhost/api/findSmallestLeaf?tree=%5B%7B%20%22root%22%3A%201%2C%20%22left%22%3A%20%7B%20%22root%22%3A%207%2C%20%22left%22%3A%20%7B%20%22root%22%3A%202%20%7D%2C%20%22right%22%3A%20%7B%20%22root%22%3A%206%20%7D%20%7D%2C%20%22right%22%3A%20%7B%20%22root%22%3A%205%2C%20%22left%22%3A%20%7B%20%22root%22%3A%209%20%7D%20%7D%20%7D%5D
+
+##POST requests:
+http://localhost/api/library
+###Sample header:
+X-VALID-USER:Happy New Year
+###Sample parameter:
+library:
+[{ "id": 10124, "code": "ARC100", "name": "Architecture / Music Library", "abbr": "Arch Music", "url": "http://www.library.uq.edu.au/locations/architecture-music-library" }]
+
+##Framework usage:
+Lumen (Please see the section below for Lumen PHP Framework)
+
+##Build tools required:
+Docker, Composer
+
+
+
 # Lumen PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
