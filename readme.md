@@ -19,9 +19,11 @@ To check if the checkout is successful, list the content under the target folder
 
 $ ls -l lumen-api
 
+```
 app/           bootstrap/     composer.lock* index.php.bak* public/        resources/     storage/
 
 artisan*       composer.json* database/      phpunit.xml*   readme.md*     routes/        tests/
+```
 
 ###Basic steps to boot up docker container:
 $ docker run -d -p 80:80 -p 443:443 -v [path to Host's target folder]:/var/www/application/public/lumen-api kennethpega2017/alpine-lumen-nginx
@@ -58,7 +60,8 @@ library:
 Lumen (Please see the section below for Lumen PHP Framework)
 
 ##Build tools required:
-Docker, Composer
+* Docker
+* Composer
 
 
 
