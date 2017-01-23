@@ -5,7 +5,9 @@ https://hub.docker.com/r/kennethpega2017/alpine-lumen-nginx/
 ###Basic steps to boot up docker container:
 $ docker run -d -p 80:80 -p 443:443 -v [path to Host's target folder]:/var/www/application/public/lumen-api kennethpega2017/alpine-lumen-nginx
 ###Sample commands:
+
 $ docker run -d -p 80:80 -p 443:443 -v /Users/xyz/Projects/www/application/public/lumen-api:/var/www/application/public/lumen-api  kennethpega2017/alpine-lumen-nginx
+
 $ docker exec -it $(docker ps -a | grep kennethpega2017/alpine-lumen-nginx | grep "Up " | grep -o "^[0-9a-z]*") /bin/sh -l
 
 ##Web Service API calls:
